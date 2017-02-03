@@ -34,11 +34,11 @@
         <div class="row">
             <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3 white">
                 <h4 class="center">新規会員登録</h4>
-                <form>
+                <form method="post">
                     <div class="field">
                         <label for="user_email">メールアドレス</label><br/>
                         <input autofocus="autofocus" class="validate" type="email" value="" name="user[email]"
-                               id="user_email"/>
+                               id="user_email" required/>
                     </div>
 
                     <div class="field">
@@ -46,18 +46,18 @@
                         <em>(6 文字以上)</em>
                         <br/>
                         <input autocomplete="off" class="validate" type="password" name="user[password]"
-                               id="user_password"/>
+                               id="user_password" minlength="6" required/>
                     </div>
 
                     <div class="field">
                         <label for="user_password_confirmation">確認用パスワード</label><br/>
                         <input autocomplete="off" class="validate" type="password" name="user[password_confirmation]"
-                               id="user_password_confirmation"/>
+                               id="user_password_confirmation" required/>
                     </div>
                     <div class="actions center-align">
                         <input type="submit" name="commit" value="登録" class="btn red darken-1" />
                     </div>
-                </form>
+                </form>                      
             </div>
         </div>
     </div>
