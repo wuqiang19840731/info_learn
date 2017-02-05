@@ -9,6 +9,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<script>
+	function checkPasswords() {
+        var pass1 = document.getElementById("user_password");
+        var pass2 = document.getElementById("user_password_confirmation");
+ 
+        if (pass1.value != pass2.value)
+            pass1.setCustomValidity("パスワード不一致です。");
+        else
+            pass1.setCustomValidity("");
+    }
+</script>
+
 </head>
 <body>
 <!-- ヘッダ・ナビゲーション start -->

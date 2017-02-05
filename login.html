@@ -34,15 +34,17 @@
         <div class="row">
             <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3 white">
                 <h4 class="center">ログイン</h4>
-                <form method="post">
+                <form action="profile_form.html" onSubmit="return checkSubmit()" method="post">
                     <div class="field">
                         <label for="user_email">メールアドレス</label>
-                        <input autofocus="autofocus" class="validate" type="email" value="" name="user[email]" id="user_email" required />
+                        <input autofocus="autofocus" class="validate" type="email" value="" name="user[email]" id="user_email" 	onkeyup="fieldChanged();" 
+                        	onchange="fieldChanged();" required />
                     </div>
 
                     <div class="field">
                         <label for="user_password">パスワード</label><br/>
-                        <input autocomplete="off" class="validate" type="password" name="user[password]" id="user_password" minlength="6" maxlength="30" required/>
+                        <input autocomplete="off" class="validate" type="password" name="user[password]" id="user_password" minlength="6" maxlength="30" onkeyup="fieldChanged();" 
+                        	onchange="fieldChanged();" required/>
                     </div>
                     <br>
                     <div class="field">
@@ -103,6 +105,19 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
+<script>
+	function checkSubmit(){
+		if(window.confirm('ログインしてよろしいですか？')){ // 確認ダイアログを表示
 
+		return true; // 「OK」時は送信を実行
+
+	}
+	else{ // 「キャンセル」時の処理
+
+		window.alert('キャンセルされました'); // 警告ダイアログを表示
+		return false; // 送信を中止
+	}
+}
+</script>
 </body>
 </html>
