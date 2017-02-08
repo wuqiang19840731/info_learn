@@ -106,16 +106,16 @@
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
 <script>
-	function checkSubmit(){
-		if(window.confirm('ログインしてよろしいですか？')){ // 確認ダイアログを表示
-
-		return true; // 「OK」時は送信を実行
+  function checkSubmit(){
+  	var user = document.getElementById('user_email');
+    var password = document.getElementById('user_password');
+    
+    if((user.value === 'wuqiang19840731@yahoo.co.jp') || (password.value === 'wq840731')){ 
+  	  return true;;
 
 	}
-	else{ // 「キャンセル」時の処理
-
-		window.alert('キャンセルされました'); // 警告ダイアログを表示
-		return false; // 送信を中止
+	else{
+	  return false;
 	}
 }
 </script>
