@@ -9,30 +9,54 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<!--  Scripts-->
-
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/init.js"></script>
-<script>
-  function checkSubmit(){
-  	var user = document.getElementById("user_email").value;
-    var password = document.getElementById("user_password").value;
-    var managerUser = "manager@yahoo.co.jp";
-    var managerPw = "manager";
-    var custUser = "wuqiang19840731@yahoo.co.jp";
-    var coustPw = "wq840731";
-    
-    if((user === custUser && password === coustPw)||(user === managerUser && password === managerPw)){ 
-  	  return true;
-	}
-	else{
-	  return false;
-	}
+<style type="text/css">
+.code {
+background-image: url(backIm4.jpg);
+font-family: Arial;
+font-style: italic;
+color: Red;
+border: 0;
+padding: 2px 3px;
+letter-spacing: 3px;
+font-weight: bolder;
 }
+.unchanged {
+border: 0;
+}
+</style>
+<script>  
+  var code; //認証番号   
+  function createCode() {
+      code = "";
+      var codeLength = 6;//認証番号桁数   
+      var checkCode = document.getElementById("checkCode");
+      var selectChar = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');//認証番号配列   
+   
+      for (var i = 0; i < codeLength; i++) {
+          var charIndex = Math.floor(Math.random() * 36);
+          code += selectChar[charIndex];
+      }
+      //alert(code);
+      if (checkCode) {
+          checkCode.className = "code";
+          checkCode.value = code;
+      }
+  }
+   
+  function validate() {
+      var inputCode = document.getElementById("input1").value;
+      if (inputCode.length <= 0) {
+          alert("認証番号を入力してください！");
+      } else if (inputCode != code) {
+          alert("認証番号間違いっています！");
+      createCode();//リフラッシュ   
+      } else {
+      location.href = "file:///C:/Users/T&C/Desktop/info_learn/profile_form.html";
+      }
+  }
 </script>
-<body>
+</head>
+<body onload="createCode()">
 <!-- ヘッダ・ナビゲーション start -->
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
@@ -49,39 +73,16 @@
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
+<br />
+<p align="center"><font size="5">認証番号入力</font></p>
 <main>
-    <!-- ログインフォーム start -->
-    <br>
-    <div class="container">
-        <div class="row">
-            <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3 white">
-                <h4 class="center">ログイン</h4>
-                <form action="Authentication.html" onSubmit="return checkSubmit()" method="post">
-                    <div class="field">
-                        <label for="user_email">メールアドレス</label>
-                        <input autofocus="autofocus" class="validate" type="email" value="" name="user[email]" id="user_email" 	onkeyup="fieldChanged();" 
-                        	onchange="fieldChanged();" required />
-                    </div>
-
-                    <div class="field">
-                        <label for="user_password">パスワード</label><br/>
-                        <input autocomplete="off" class="validate" type="password" name="user[password]" id="user_password" minlength="6" maxlength="30" onkeyup="fieldChanged();" 
-                        	onchange="fieldChanged();" required/>
-                    </div>
-                    <br>
-                    <div class="field">
-                        <input name="user[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />
-                        <label for="user_remember_me">ログインを記憶</label>
-                    </div>
-                    <br>
-                    <div class="actions center-align">
-                        <input type="submit" name="commit" value="ログイン" class="btn red darken-1" data-disable-with="ログイン" />
-                        <input type="reset" name="commit" value="リセット" class="btn red darken-1" data-disable-with="リセット" />
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+<div align="center">
+<form action="#">
+    <input type="text" onclick="createCode()" readonly="readonly" id="checkCode" class="unchanged" style="width: 80px" /><br />
+    <input type="text" id="input1" size="20" style="width:80px" border="1px"/> <br />
+    <input id="Button1" onclick="validate();" type="button" value="确定" />
+</form>
+</div>
 </main>
 <footer class="page-footer teal">
     <div class="container">
