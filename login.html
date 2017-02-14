@@ -10,6 +10,24 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
+<!--  Scripts-->
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+<script>
+  function checkSubmit(){
+  	var user = document.getElementById("user_email").value;
+    var password = document.getElementById("user_password").value;
+    
+    if(user === "wuqiang19840731@yahoo.co.jp" && password === "wq840731"){ 
+  	  return true;
+	}
+	else{
+	  return false;
+	}
+}
+</script>
 <body>
 <!-- ヘッダ・ナビゲーション start -->
 <nav class="white" role="navigation">
@@ -54,6 +72,7 @@
                     <br>
                     <div class="actions center-align">
                         <input type="submit" name="commit" value="ログイン" class="btn red darken-1" data-disable-with="ログイン" />
+                        <input type="reset" name="commit" value="リセット" class="btn red darken-1" data-disable-with="リセット" />
                     </div>
                 </form>
             </div>
@@ -98,26 +117,5 @@
     </div>
 </footer>
 <!-- フッター end -->
-
-
-<!--  Scripts-->
-
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/init.js"></script>
-<script>
-  function checkSubmit(){
-  	var user = document.getElementById('user_email');
-    var password = document.getElementById('user_password');
-    
-    if((user.value === 'wuqiang19840731@yahoo.co.jp') || (password.value === 'wq840731')){ 
-  	  return true;;
-
-	}
-	else{
-	  return false;
-	}
-}
-</script>
 </body>
 </html>
