@@ -1,0 +1,14 @@
+.code {
+	background-image: url(../img/backIm4.jpg);
+	font-family: Arial;
+	font-style: italic;
+	color: Red;
+	border: 0;
+	padding: 2px 3px;
+	letter-spacing: 3px;
+	font-weight: bolder;
+}
+
+.unchanged {
+	border: 0;
+}

@@ -9,29 +9,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/authentication.css" type="text/css"rel="stylesheet"/>
 </head>
 <!--  Scripts-->
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
-<script>
-  function checkSubmit(){
-  	var user = document.getElementById("user_email").value;
-    var password = document.getElementById("user_password").value;
-    var managerUser = "manager@yahoo.co.jp";
-    var managerPw = "manager";
-    var custUser = "wuqiang19840731@yahoo.co.jp";
-    var coustPw = "wq840731";
-    
-    if((user === custUser && password === coustPw)||(user === managerUser && password === managerPw)){ 
-  	  return true;
-	}
-	else{
-	  return false;
-	}
-}
-</script>
+<script src="js/checkSubmit.js"></script>
+
 <body>
 <!-- ヘッダ・ナビゲーション start -->
 <nav class="white" role="navigation">
@@ -56,7 +42,7 @@
         <div class="row">
             <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3 white">
                 <h4 class="center">ログイン</h4>
-                <form action="Authentication.html" onSubmit="return checkSubmit()" method="post">
+                <form action="profile_form.html" onSubmit="return checkSubmit()" method="post">
                     <div class="field">
                         <label for="user_email">メールアドレス</label>
                         <input autofocus="autofocus" class="validate" type="email" value="" name="user[email]" id="user_email" 	onkeyup="fieldChanged();" 
@@ -69,13 +55,16 @@
                         	onchange="fieldChanged();" required/>
                     </div>
                     <br>
-                    <div class="field">
+                    <div align="center" class="field">
+                    	<input type="text" id="Authentication" size="20" style="width:80px" border="1px" maxlength="4" />
+                    	<input type="text" onclick="createCode()" readonly="readonly" id="checkCode" class="unchanged" style="width: 80px" />
+   					 	 <br />
                         <input name="user[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />
                         <label for="user_remember_me">ログインを記憶</label>
                     </div>
                     <br>
-                    <div class="actions center-align">
-                        <input type="submit" name="commit" value="ログイン" class="btn red darken-1" data-disable-with="ログイン" />
+                    <div class="actions center-align">                    	
+                        <input type="submit" name="commit" value="ログイン" onclick="return validate();" class="btn red darken-1" data-disable-with="ログイン" />
                         <input type="reset" name="commit" value="リセット" class="btn red darken-1" data-disable-with="リセット" />
                     </div>
                 </form>
